@@ -11,6 +11,7 @@ readme = "README.md"
 dependencies = [
     "s3torchconnector[lightning,dcp]",
     "boto3",
+    "azure.storage.blob",
     "click",
     "hydra-core",
     "pandas",

@@ -41,6 +41,7 @@ e2e = [
     "torchvision",
     "Pillow>=10.3.0",
     "boto3",
+    "azure.storage.blob"
     "numpy < 2",
     "pytest-xdist"
 ]

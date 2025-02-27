@@ -26,6 +26,7 @@ dependencies = []
 [project.optional-dependencies]
 test = [
     "boto3",
+    "azure.storage.blob"
     "pytest",
     "pytest-timeout",
     "hypothesis",
