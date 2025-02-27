@@ -13,6 +13,7 @@ from threading import Thread, Lock, Barrier
 from typing import Callable, Iterator, TypeVar, Tuple, List, Optional, Union
 
 import boto3  # type: ignore
+from azure.storage.blob import BlobServiceConnection
 import click
 import numpy as np
 import prefixed as pr  # type: ignore
@@ -120,8 +121,15 @@ class Utils:
     @staticmethod
     def upload_to_s3(region: str, data: io.BytesIO, bucket: str, key: str):
         click.echo(f"Uploading to {key=}")
-        s3_client = boto3.client("s3", region_name=region)
-        s3_client.upload_fileobj(data, bucket, key)
+        #s3_client = boto3.client("s3", region_name=region)
+        #s3_client.upload_fileobj(data, bucket, key)
+        # loadams
+        blob_service_client = BlobServiceClient.from_connection_string('')
+        blob_client = blob_service_client.get_blob_client(container='', blob='')
+
+        with open('local_file.txt', 'rb') as data:
+            blob_client.upload_blob(data)
+
 
     @staticmethod
     def parse_human_readable_bytes(

@@ -10,7 +10,7 @@ from ._s3bucket_key_data import S3BucketKeyData
 
 """
 _s3dataset_common.py
-    Collection of common methods for S3 datasets, containing logic for URIs parsing and objects listing. 
+    Collection of common methods for S3 datasets, containing logic for URIs parsing and objects listing.
 """
 
 
@@ -18,7 +18,7 @@ def identity(obj: S3Reader) -> S3Reader:
     return obj
 
 
-# TODO: Check boto3 implementation for this
+# loadams - update this for blobstore
 def parse_s3_uri(uri: str) -> Tuple[str, str]:
     if not uri or not uri.startswith("s3://"):
         raise ValueError("Only s3:// URIs are supported")

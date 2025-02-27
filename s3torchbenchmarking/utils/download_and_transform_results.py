@@ -3,6 +3,8 @@ from enum import Enum
 from typing import List, Dict, Any
 import json
 import boto3
+import azure.storage.blob
+from azure.storage.blob import BlobServiceClient
 
 from html_result_generator import HtmlResultGenerator
 
@@ -21,6 +23,9 @@ class GenerateForMode(Enum):
 
 
 s3_client = boto3.client("s3")
+# loadams
+blob_service_client = BlobServiceClient.from_connection_string('your_connection_string')
+blob_client = blob_service_client.get_blob_client(container='container_name', blob='remote_file.txt')
 
 
 # Get a list of all object keys (file names) in the S3 bucket.
